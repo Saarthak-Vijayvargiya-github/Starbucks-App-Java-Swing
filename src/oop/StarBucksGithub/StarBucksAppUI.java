@@ -11,6 +11,29 @@ public class StarBucksAppUI {
 	static String[] startOpts = {"Get Bill", "Place an Order", "Cart"};
 	static String[] bevOpts = {"Exit", "DarkRoast", "Decafe","Espresso","HouseBlend"};
 	static String[] CondiOpts = {"None", "Milk", "Mocha","Soy","Whip"};
+	static ImageIcon mainLogo, bill_Icon, paySuccess, cancelOrder;
+	static {
+		try {
+			mainLogo = new ImageIcon(StarBucksAppUI.class.getResource("/MainLogo.png"));
+		} catch (Exception e) {
+			mainLogo = null;
+		}
+		try {
+			bill_Icon = new ImageIcon(StarBucksAppUI.class.getResource("/bill_icon.png"));
+		} catch (Exception e) {
+			bill_Icon = null;
+		}
+		try {
+			paySuccess = new ImageIcon(StarBucksAppUI.class.getResource("/check_mark.png"));
+		} catch (Exception e) {
+			paySuccess = null;
+		}
+		try {
+			cancelOrder = new ImageIcon(StarBucksAppUI.class.getResource("/SadEmoji.png"));
+		} catch (Exception e) {
+			cancelOrder = null;
+		}
+	}
 	
 	public static int getChoiceMain() {
 		int choice = JOptionPane.showOptionDialog(
@@ -19,13 +42,13 @@ public class StarBucksAppUI {
                 "Main Menu",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
-                null,
+                mainLogo,
                 startOpts,
                 "default");
 		return choice;
 	}
 	
-	public static int getBeverage() {
+	public static int getBeverage() {;
 		int choice = JOptionPane.showOptionDialog(
                 frame,
                 "Hey, what's up on your Mind :)",
@@ -115,7 +138,7 @@ public class StarBucksAppUI {
                 "Please review your order",
                 JOptionPane.CLOSED_OPTION,
                 icon,
-                null,
+                bill_Icon,
                 show.toArray(),
                 "default");
 		
@@ -130,7 +153,7 @@ public class StarBucksAppUI {
 	                "Thanks and Visit Again",
 	                JOptionPane.CLOSED_OPTION,
 	                icon,
-	                null,
+	                cancelOrder,
 	                show.toArray(),
 	                "default");
 			return 0;
@@ -142,7 +165,7 @@ public class StarBucksAppUI {
 	                "Thanks and Visit Again",
 	                JOptionPane.CLOSED_OPTION,
 	                icon,
-	                null,
+	                paySuccess,
 	                show.toArray(),
 	                "default");
 			return 0;
