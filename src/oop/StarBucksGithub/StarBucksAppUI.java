@@ -11,28 +11,26 @@ public class StarBucksAppUI {
 	static String[] startOpts = {"Get Bill", "Place an Order", "Cart"};
 	static String[] bevOpts = {"Exit", "DarkRoast", "Decafe","Espresso","HouseBlend"};
 	static String[] CondiOpts = {"None", "Milk", "Mocha","Soy","Whip"};
-	static ImageIcon mainLogo, bill_Icon, paySuccess, cancelOrder;
+	static ImageIcon mainLogo, bill_Icon, paySuccess, cancelOrder, cartImg, coffeeImg, condimentsImg;
+	
 	static {
-		try {
-			mainLogo = new ImageIcon(StarBucksAppUI.class.getResource("/MainLogo.png"));
-		} catch (Exception e) {
-			mainLogo = null;
-		}
-		try {
-			bill_Icon = new ImageIcon(StarBucksAppUI.class.getResource("/bill_icon.png"));
-		} catch (Exception e) {
-			bill_Icon = null;
-		}
-		try {
-			paySuccess = new ImageIcon(StarBucksAppUI.class.getResource("/check_mark.png"));
-		} catch (Exception e) {
-			paySuccess = null;
-		}
-		try {
-			cancelOrder = new ImageIcon(StarBucksAppUI.class.getResource("/SadEmoji.png"));
-		} catch (Exception e) {
-			cancelOrder = null;
-		}
+		try {mainLogo = new ImageIcon(StarBucksAppUI.class.getResource("/MainLogo.png")); }
+		catch (Exception e) {mainLogo = null;}
+		
+		try {bill_Icon = new ImageIcon(StarBucksAppUI.class.getResource("/bill_icon.png"));} 
+		catch (Exception e) {bill_Icon = null;}
+		
+		try {paySuccess = new ImageIcon(StarBucksAppUI.class.getResource("/check_mark.png"));} 
+		catch (Exception e) {paySuccess = null;}
+		
+		try {cancelOrder = new ImageIcon(StarBucksAppUI.class.getResource("/SadEmoji.png"));} 
+		catch (Exception e) {cancelOrder = null;}
+		
+		try {coffeeImg = new ImageIcon(StarBucksAppUI.class.getResource("/coffee.png"));} 
+		catch (Exception e) {coffeeImg = null;}
+		
+		try {condimentsImg = new ImageIcon(StarBucksAppUI.class.getResource("/condimentsImg.png"));} 
+		catch (Exception e) {condimentsImg = null;}
 	}
 	
 	public static int getChoiceMain() {
@@ -55,7 +53,7 @@ public class StarBucksAppUI {
                 "Select Beverage",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
-                null,
+                coffeeImg,
                 bevOpts,
                 "default");
 		return choice;
@@ -69,7 +67,7 @@ public class StarBucksAppUI {
                 "Select Condiments",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
-                null,
+                condimentsImg,
                 CondiOpts,
                 "default");
 		return choice;
@@ -93,11 +91,14 @@ public class StarBucksAppUI {
 				index[0]++;
 			});
 			sb.append("\nTotal: " + total[0] + "\n");
+			try {cartImg = new ImageIcon(StarBucksAppUI.class.getResource("/shopping-cart.png"));} 
+			catch (Exception e) {cartImg = null;}
 		}
 		else {
 			show.add("Go back");
 			icon = JOptionPane.WARNING_MESSAGE;
 			sb.append("Your Cart is empty :| \n");
+			cartImg = null;
 		}
 		
 		int opt = JOptionPane.showOptionDialog(
@@ -106,7 +107,7 @@ public class StarBucksAppUI {
                 "Cart",
                 JOptionPane.DEFAULT_OPTION,
                 icon,
-                null,
+                cartImg,
                 show.toArray(),
                 "default");
 		
